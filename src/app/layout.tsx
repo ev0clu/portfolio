@@ -4,6 +4,7 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { siteConfig } from "@/config/site";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const fontSans = FontSans({
@@ -90,6 +91,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           <main className="container flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
