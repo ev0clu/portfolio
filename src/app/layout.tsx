@@ -4,7 +4,7 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { siteConfig } from "@/config/site";
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 
 const fontSans = FontSans({
@@ -26,16 +26,20 @@ export const metadata: Metadata = {
     "Typescript",
     "Tailwind CSS",
     "Shadcn UI",
+    "MaterialUI",
     "Node.js",
     "Express.js",
     "Nest.js",
+    "Prisma ORM",
     "MongoDB",
     "PostgreSQL",
+    "Docker",
     "Chart",
     "Fullstack",
     "Full stack",
     "Frontend",
     "Web developer",
+    "Developer",
   ],
   authors: [
     {

@@ -1,7 +1,11 @@
+import About from "@/components/About/About";
+import HeroSection from "@/components/HeroSection/HeroSection";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Home
-    </main>
+    <>
+      <HeroSection />
+      <About />
+    </>
   );
 }
