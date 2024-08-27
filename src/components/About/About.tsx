@@ -21,10 +21,12 @@ const About = () => {
           CSS, JavaScript, and TypeScript, I have hands-on experience with
           various web frameworks, including React, Next.js, and more.
         </p>
-        <h3 className="mt-5 text-lg font-semibold sm:text-xl">Tech stack</h3>
+        <h3 className="mt-5 text-lg font-semibold hover:cursor-default sm:text-xl">
+          Tech stack
+        </h3>
         <div className="flex justify-center">
           <Skills
-            tileClassName="h-20 w-20 sm:h-24 sm:w-24 rounded-md bg-accent p-5 hover:text-emerald-500"
+            tileClassName="h-20 w-20 sm:h-24 sm:w-24 rounded-md bg-accent p-5 hover:text-emerald-500 hover:cursor-default"
             tooltipClassName="bg-stone-500 border-0 text-emerald-300 font-semibold"
           />
         </div>
