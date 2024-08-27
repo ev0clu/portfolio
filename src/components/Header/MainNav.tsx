@@ -8,7 +8,7 @@ const MainNav = () => {
       <Link href={"/"} className="hidden sm:block" aria-label="Home link">
         <Image src="/logo.svg" width={20} height={20} alt="Logo" />
       </Link>
-      <ul className="hidden flex-row gap-3 sm:flex">
+      <ul className="hidden flex-row gap-3 font-semibold sm:flex">
         {navConfig.map((element) => (
           <li key={element}>{element}</li>
         ))}

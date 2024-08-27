@@ -28,7 +28,7 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetTitle className="sr-only"></SheetTitle>
       <SheetDescription className="sr-only"></SheetDescription>
-      <SheetContent side={"left"} className="px-8 py-3">
+      <SheetContent side={"left"} className="px-8 py-3 font-semibold">
         {navConfig.map((element) => (
           <li key={element} className="list-none">
             {element}
