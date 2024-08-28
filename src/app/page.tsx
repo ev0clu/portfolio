@@ -6,8 +6,10 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <About />
-      <Projects />
+      <div className="space-y-40">
+        <About />
+        <Projects />
+      </div>
     </>
   );
 }
