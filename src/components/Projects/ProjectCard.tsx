@@ -28,14 +28,32 @@ const ProjectCard = ({
   github,
   demo,
 }: ProjectCardProps) => {
+  const getMotionXY = (): {
+    motionX: number;
+    motionY: number;
+    motionScale: number;
+  } => {
+    if (window.innerWidth > 640 && window.innerWidth < 768) {
+      return { motionX: 0, motionY: 20, motionScale: 1.15 };
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+      return { motionX: 0, motionY: 70, motionScale: 1.4 };
+    } else if (window.innerWidth >= 1024 && window.innerWidth < 1280) {
+      return { motionX: 170, motionY: 25, motionScale: 2 };
+    } else if (window.innerWidth >= 1280) {
+      return { motionX: 200, motionY: -20, motionScale: 2 };
+    } else return { motionX: 0, motionY: 0, motionScale: 1 };
+  };
+
+  const { motionX, motionY, motionScale } = getMotionXY();
+
   return (
-    <Card className="flex h-80 flex-col hover:bg-accent/30 hover:shadow-inner sm:flex-row sm:gap-5">
-      <div className="mx-auto p-5 sm:w-1/3">
+    <Card className="flex flex-col hover:bg-accent/30 hover:shadow-inner sm:gap-5 lg:h-80 lg:flex-row">
+      <div className="mx-auto p-5 lg:w-1/3">
         <motion.img
           whileHover={{
-            scale: 2,
-            x: 200,
-            y: -20,
+            scale: motionScale,
+            x: motionX,
+            y: motionY,
             transition: { duration: 0.3 },
           }}
           src={img}
@@ -45,7 +63,7 @@ const ProjectCard = ({
           className="rounded-md"
         />
       </div>
-      <div className="flex flex-col justify-between sm:w-2/3">
+      <div className="flex flex-col justify-between lg:w-2/3">
         <div>
           <CardHeader>
             <CardTitle>{name}</CardTitle>
