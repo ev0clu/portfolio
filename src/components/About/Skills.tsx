@@ -5,13 +5,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { BiLogoPostgresql } from "react-icons/bi";
-import {
-  FaDocker,
-  FaGitAlt,
-  FaGithub,
-  FaNodeJs,
-  FaReact,
-} from "react-icons/fa";
+import { FaDocker, FaNodeJs, FaReact } from "react-icons/fa";
+import { IoLogoFirebase } from "react-icons/io5";
 import { RiTailwindCssFill } from "react-icons/ri";
 import {
   SiExpress,
@@ -197,10 +192,13 @@ const Skills = ({ tileClassName, tooltipClassName }: SkillsProps) => {
       <TooltipProvider delayDuration={100}>
         <Tooltip>
           <TooltipTrigger>
-            <FaGitAlt className={tileClassName} aria-label="Git skill" />
+            <IoLogoFirebase
+              className={tileClassName}
+              aria-label="Firebase skill"
+            />
           </TooltipTrigger>
           <TooltipContent className={tooltipClassName}>
-            <p>Git</p>
+            <p>Firebase</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
