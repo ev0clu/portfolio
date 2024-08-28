@@ -32,8 +32,7 @@ const ProjectCard = ({
     <Card className="flex flex-col hover:bg-accent/30 hover:shadow-inner sm:flex-row sm:gap-5">
       <div className="mx-auto p-5 sm:w-1/3">
         <motion.img
-          whileHover={{ scale: 2, x: 200 }}
-          animate={{ transition: { duration: 0.8 } }}
+          whileHover={{ scale: 2, x: 200, transition: { duration: 0.3 } }}
           src={img}
           width={500}
           height={500}
