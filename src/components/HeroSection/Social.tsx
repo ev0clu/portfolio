@@ -17,14 +17,14 @@ const Social = () => {
       <div className="flex flex-row gap-3">
         <Link
           href="https://github.com/ev0clu"
-          className="hover:opacity-75"
+          className="hover:scale-105 hover:opacity-75"
           aria-label="Github repository link"
         >
           <FaGithub className="h-7 w-7 text-emerald-500" />
         </Link>
         <Link
           href="https://www.linkedin.com/in/laszlo-kis-1932a1276/"
-          className="hover:opacity-75"
+          className="hover:scale-105 hover:opacity-75"
           aria-label="Linkedin profile link"
         >
           <FaLinkedin className="h-7 w-7 text-emerald-500" />
