@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <div className="space-y-40">
+      <div className="space-y-10 sm:space-y-40">
         <About />
         <Projects />
       </div>
