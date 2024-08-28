@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const MainNav = () => {
   return (
-    <div className="flex flex-row items-center justify-between">
+    <nav className="flex flex-row items-center justify-between">
       <Link href={"/"} className="hidden sm:block" aria-label="Home link">
         <Image src="/logo.svg" width={20} height={20} alt="Logo" />
       </Link>
@@ -13,7 +13,7 @@ const MainNav = () => {
           <li key={element}>{element}</li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 };
 
