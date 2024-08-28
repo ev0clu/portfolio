@@ -9,7 +9,7 @@ import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
   return (
-    <Section>
+    <Section id="Projects">
       <SectionMotion>
         <SectionTitle>Projects</SectionTitle>
         <div className="space-y-5">

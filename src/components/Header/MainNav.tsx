@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { navConfig } from "@/config/nav";
 import Link from "next/link";
+import { navConfig } from "@/config/nav";
+import ScrollLink from "./ScrollLink";
 
 const MainNav = () => {
   return (
@@ -10,7 +11,9 @@ const MainNav = () => {
       </Link>
       <ul className="hidden flex-row gap-6 font-semibold sm:flex">
         {navConfig.map((element) => (
-          <li key={element}>{element}</li>
+          <li key={element}>
+            <ScrollLink href={`#${element}`}>{element}</ScrollLink>
+          </li>
         ))}
       </ul>
     </nav>

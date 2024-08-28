@@ -8,7 +8,7 @@ import Skills from "./Skills";
 
 const About = () => {
   return (
-    <Section>
+    <Section id="About">
       <SectionMotion>
         <SectionTitle>About me</SectionTitle>
         <p className="text-center">

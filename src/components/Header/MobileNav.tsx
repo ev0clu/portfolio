@@ -11,6 +11,7 @@ import {
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 import { navConfig } from "@/config/nav";
+import ScrollLink from "./ScrollLink";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -29,11 +30,13 @@ const MobileNav = () => {
       <SheetTitle className="sr-only"></SheetTitle>
       <SheetDescription className="sr-only"></SheetDescription>
       <SheetContent side={"left"} className="space-y-3 px-8 py-3 font-semibold">
-        {navConfig.map((element) => (
-          <li key={element} className="list-none">
-            {element}
-          </li>
-        ))}
+        <ul className="mt-5">
+          {navConfig.map((element) => (
+            <li key={element} className="list-none">
+              <ScrollLink href={`#${element}`}>{element}</ScrollLink>
+            </li>
+          ))}
+        </ul>
       </SheetContent>
     </Sheet>
   );
