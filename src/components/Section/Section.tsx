@@ -16,6 +16,7 @@ const Section = ({ children, id, className }: SectionProps) => {
   const { setActiveSection } = useScrollContext();
 
   const { ref } = useInView({
+    //root: null,
     rootMargin: "0px 0px -100% 0px",
     threshold: 0,
     // triggerOnce: true,
