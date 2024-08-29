@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="mt-24 space-y-16 sm:mt-0 sm:space-y-40">
+      <div className="space-y-16 sm:space-y-40">
         <About />
         <Projects />
       </div>
