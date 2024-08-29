@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useScrollContext } from "../ScrollProvider";
 import {
   Sheet,
@@ -13,11 +12,10 @@ import {
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 import { navConfig } from "@/config/nav";
-import { cn } from "@/lib/utils";
+import ScrollLink from "./ScrollLink";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
-  const { activeSection } = useScrollContext();
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -36,14 +34,9 @@ const MobileNav = () => {
         <ul className="mt-5">
           {navConfig.map((element) => (
             <li key={element} className="list-none">
-              <Link
-                href={`#${element}`}
-                className={cn("font-semibold", {
-                  "text-red-500": activeSection === element,
-                })}
-              >
+              <ScrollLink href={`#${element}`} name={element}>
                 {element}
-              </Link>
+              </ScrollLink>
             </li>
           ))}
         </ul>

@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useScrollContext } from "../ScrollProvider";
 import { navConfig } from "@/config/nav";
-import { cn } from "@/lib/utils";
+import ScrollLink from "./ScrollLink";
 
 const MainNav = () => {
   const { activeSection } = useScrollContext();
@@ -16,15 +17,19 @@ const MainNav = () => {
       </Link>
       <ul className="hidden flex-row gap-6 font-semibold sm:flex">
         {navConfig.map((element) => (
-          <li key={element}>
-            <Link
-              href={`#${element}`}
-              className={cn("font-semibold", {
-                "text-red-500": activeSection === element,
-              })}
-            >
+          <li key={element} className="relative">
+            <ScrollLink href={`#${element}`} name={element}>
               {element}
-            </Link>
+            </ScrollLink>
+            {activeSection === element && (
+              <motion.div
+                className="absolute bottom-0 left-0 h-1 w-full bg-emerald-500"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                exit={{ scaleX: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              />
+            )}
           </li>
         ))}
       </ul>
