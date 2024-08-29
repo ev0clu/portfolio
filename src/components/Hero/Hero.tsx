@@ -2,7 +2,7 @@ import Info from "./Info";
 import Social from "./Social";
 import Photo from "./Photo";
 
-const HeroSection = () => {
+const Hero = () => {
   return (
     <section
       id="Home"
@@ -25,4 +25,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Hero;
