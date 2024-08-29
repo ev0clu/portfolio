@@ -2,6 +2,9 @@
 
 import Link, { LinkProps } from "next/link";
 import React, { PropsWithChildren } from "react";
+import { useScrollContext } from "../ScrollProvider";
+import { TNavConfig } from "@/config/nav";
+import { cn } from "@/lib/utils";
 
 const SCROLL_OFFSET = 70;
 
@@ -10,9 +13,17 @@ type AnchorProps = Omit<
   React.AnchorHTMLAttributes<HTMLAnchorElement>,
   keyof LinkProps
 >;
-type ScrollLinkProps = AnchorProps & LinkProps & PropsWithChildren;
+type CustomProps = {
+  name: TNavConfig;
+};
+type ScrollLinkProps = AnchorProps &
+  LinkProps &
+  PropsWithChildren &
+  CustomProps;
 
-const ScrollLink = ({ children, ...props }: ScrollLinkProps) => {
+const ScrollLink = ({ children, name, ...props }: ScrollLinkProps) => {
+  const { activeSection, setActiveSection } = useScrollContext();
+
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     //remove everything before the hash
@@ -22,6 +33,8 @@ const ScrollLink = ({ children, ...props }: ScrollLinkProps) => {
       const elementPosition = elem.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - SCROLL_OFFSET;
 
+      setActiveSection(name);
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
@@ -29,7 +42,13 @@ const ScrollLink = ({ children, ...props }: ScrollLinkProps) => {
     }
   };
   return (
-    <Link {...props} onClick={handleScroll}>
+    <Link
+      {...props}
+      className={cn("font-semibold", {
+        "text-red-500": activeSection === name,
+      })}
+      onClick={handleScroll}
+    >
       {children}
     </Link>
   );

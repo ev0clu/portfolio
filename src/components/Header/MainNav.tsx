@@ -12,7 +12,9 @@ const MainNav = () => {
       <ul className="hidden flex-row gap-6 font-semibold sm:flex">
         {navConfig.map((element) => (
           <li key={element}>
-            <ScrollLink href={`#${element}`}>{element}</ScrollLink>
+            <ScrollLink href={`#${element}`} name={element}>
+              {element}
+            </ScrollLink>
           </li>
         ))}
       </ul>

@@ -29,11 +29,13 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetTitle className="sr-only"></SheetTitle>
       <SheetDescription className="sr-only"></SheetDescription>
-      <SheetContent side={"left"} className="space-y-3 px-8 py-3 font-semibold">
+      <SheetContent side={"left"} className="space-y-3 px-8 py-3">
         <ul className="mt-5">
           {navConfig.map((element) => (
             <li key={element} className="list-none">
-              <ScrollLink href={`#${element}`}>{element}</ScrollLink>
+              <ScrollLink href={`#${element}`} name={element}>
+                {element}
+              </ScrollLink>
             </li>
           ))}
         </ul>
