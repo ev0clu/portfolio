@@ -1,12 +1,13 @@
+import Section from "../Section/Section";
 import Info from "./Info";
 import Social from "./Social";
 import Photo from "./Photo";
 
 const Hero = () => {
   return (
-    <section
+    <Section
       id="Home"
-      className="relative mb-16 sm:my-0 sm:h-[calc(100vh-65px)]"
+      className="relative my-0 mb-16 block sm:my-0 sm:h-[calc(100vh-65px)]"
     >
       <div className="flex w-full flex-col justify-center gap-10 sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 md:flex-row">
         <div className="order-2 flex flex-col justify-center gap-5 md:order-none md:w-1/2 lg:w-1/3">
@@ -21,7 +22,7 @@ const Hero = () => {
           <Photo />
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
