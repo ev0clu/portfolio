@@ -1,6 +1,10 @@
-import { TNavConfig } from "@/config/nav";
-import { cn } from "@/lib/utils";
+"use client";
+
 import { ReactNode } from "react";
+import { useInView } from "react-intersection-observer";
+import { cn } from "@/lib/utils";
+import { useScrollContext } from "../ScrollProvider";
+import { TNavConfig } from "@/config/nav";
 
 interface SectionProps {
   children: ReactNode;
@@ -9,11 +13,26 @@ interface SectionProps {
 }
 
 const Section = ({ children, id, className }: SectionProps) => {
+  const { setActiveSection } = useScrollContext();
+
+  const { ref } = useInView({
+    rootMargin: "0px 0px -100% 0px",
+    threshold: 0,
+    // triggerOnce: true,
+    onChange: (inView) => {
+      console.log("view: ", id);
+      if (inView) {
+        setActiveSection(id);
+      }
+    },
+  });
+
   return (
     <section
+      ref={ref}
       id={id}
       className={cn(
-        "my-16 flex w-full flex-col items-center justify-center",
+        "flex w-full flex-col items-center justify-center pt-16",
         className,
       )}
     >
