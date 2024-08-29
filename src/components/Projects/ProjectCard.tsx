@@ -33,15 +33,18 @@ const ProjectCard = ({
     motionY: number;
     motionScale: number;
   } => {
-    if (window.innerWidth > 640 && window.innerWidth < 768) {
-      return { motionX: 0, motionY: 20, motionScale: 1.15 };
-    } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-      return { motionX: 0, motionY: 70, motionScale: 1.4 };
-    } else if (window.innerWidth >= 1024 && window.innerWidth < 1280) {
-      return { motionX: 170, motionY: 25, motionScale: 2 };
-    } else if (window.innerWidth >= 1280) {
-      return { motionX: 200, motionY: -20, motionScale: 2 };
-    } else return { motionX: 0, motionY: 0, motionScale: 1 };
+    if (typeof window !== "undefined") {
+      if (window.innerWidth > 640 && window.innerWidth < 768) {
+        return { motionX: 0, motionY: 20, motionScale: 1.15 };
+      } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+        return { motionX: 0, motionY: 70, motionScale: 1.4 };
+      } else if (window.innerWidth >= 1024 && window.innerWidth < 1280) {
+        return { motionX: 170, motionY: 25, motionScale: 2 };
+      } else if (window.innerWidth >= 1280) {
+        return { motionX: 200, motionY: -20, motionScale: 2 };
+      } else return { motionX: 0, motionY: 0, motionScale: 1 };
+    }
+    return { motionX: 0, motionY: 0, motionScale: 1 };
   };
 
   const { motionX, motionY, motionScale } = getMotionXY();
