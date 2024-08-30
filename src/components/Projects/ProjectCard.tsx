@@ -10,6 +10,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "../ui/button";
 
 interface ProjectCardProps {
   name: string;
@@ -93,7 +95,10 @@ const ProjectCard = ({
               aria-label="GitHub link"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-10 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90 hover:text-accent-foreground hover:text-emerald-600"
+              className={cn(
+                buttonVariants({ variant: "default" }),
+                "rounded-md hover:text-accent-foreground hover:text-emerald-600",
+              )}
             >
               GitHub
             </Link>
@@ -102,7 +107,10 @@ const ProjectCard = ({
               aria-label="Demo link"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-10 rounded-md bg-emerald-500 px-4 py-2 hover:bg-emerald-500/90 hover:text-background"
+              className={cn(
+                buttonVariants({ variant: "default" }),
+                "rounded-md bg-emerald-500 hover:bg-emerald-500/90 hover:text-foreground",
+              )}
             >
               Demo
             </Link>
