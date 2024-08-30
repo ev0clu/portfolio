@@ -5,6 +5,7 @@ import React, { PropsWithChildren } from "react";
 import { useScrollContext } from "../ScrollProvider";
 import { TNavConfig } from "@/config/nav";
 import { cn } from "@/lib/utils";
+import { animate, cubicBezier } from "framer-motion";
 
 const SCROLL_OFFSET = 1;
 
@@ -37,13 +38,21 @@ const ScrollLink = ({ children, name, ...props }: ScrollLinkProps) => {
         top: offsetPosition,
         behavior: "smooth",
       });
+
+      const easing = cubicBezier(0.5, 0, 0.5, 1.0); // Ease-In-Out
+
+      animate(window.scrollY, offsetPosition, {
+        duration: 0.5, // Duration of the scroll animation
+        ease: easing, // Apply the custom easing curve
+        onUpdate: (value) => window.scrollTo(0, value),
+      });
     }
   };
   return (
     <Link
       {...props}
       className={cn("font-semibold", {
-        "text-red-500": activeSection === name,
+        "text-emerald-500": activeSection === name,
       })}
       onClick={handleScroll}
     >
