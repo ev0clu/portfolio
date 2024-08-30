@@ -5,8 +5,6 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ScrollProvider } from "@/components/ScrollProvider";
 import { siteConfig } from "@/config/site";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -86,7 +84,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "relative flex min-h-screen flex-col bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] font-sans antialiased",
+          "min-h-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] font-sans antialiased",
           fontSans.variable,
         )}
       >
@@ -97,8 +95,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ScrollProvider>
-            <Header />
-            <main className="container flex-1">{children}</main> <Footer />
+            <div className="relative flex min-h-screen flex-col">
+              {children}
+            </div>
           </ScrollProvider>
         </ThemeProvider>
       </body>
