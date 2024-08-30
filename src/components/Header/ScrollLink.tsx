@@ -42,7 +42,7 @@ const ScrollLink = ({ children, name, ...props }: ScrollLinkProps) => {
       const easing = cubicBezier(0.5, 0, 0.5, 1.0); // Ease-In-Out
 
       animate(window.scrollY, offsetPosition, {
-        duration: 0.5, // Duration of the scroll animation
+        duration: 0.4, // Duration of the scroll animation
         ease: easing, // Apply the custom easing curve
         onUpdate: (value) => window.scrollTo(0, value),
       });
