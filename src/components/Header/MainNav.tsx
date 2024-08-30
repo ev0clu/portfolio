@@ -23,7 +23,7 @@ const MainNav = () => {
             </ScrollLink>
             {activeSection === element && (
               <motion.div
-                className="absolute bottom-0 left-0 h-1 w-full bg-emerald-500"
+                className="absolute bottom-0 left-0 h-[3px] w-full bg-emerald-500"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 exit={{ scaleX: 0 }}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useScrollContext } from "../ScrollProvider";
 import {
   Sheet,
   SheetContent,
@@ -22,7 +21,7 @@ const MobileNav = () => {
       <SheetTrigger asChild>
         <Button
           variant="ghost"
-          className="mr-2 h-6 px-0 py-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 sm:hidden"
+          className="h-6 px-0 py-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 sm:hidden"
           aria-label="Menu button"
         >
           <Menu />
@@ -33,7 +32,7 @@ const MobileNav = () => {
       <SheetContent side={"left"} className="space-y-3 px-8 py-3">
         <ul className="mt-5">
           {navConfig.map((element) => (
-            <li key={element} className="list-none">
+            <li key={element} className="relative list-none">
               <ScrollLink href={`#${element}`} name={element}>
                 {element}
               </ScrollLink>

@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <Section
       id="Home"
-      className="h-screen"
+      className="h-[calc(100vh-65px)] pt-0"
       // className="relative my-0 mb-16 block sm:my-0 sm:h-[calc(100vh-65px)]"
     >
       <div className="flex w-full flex-col items-center justify-center gap-10 md:flex-row">
