@@ -3,15 +3,17 @@ import About from "@/components/About/About";
 import Projects from "@/components/Projects/Projects";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
+import Contact from "@/components/Contact/Contact";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="container">
+      <main className="space-y-10">
         <Hero />
         <About />
         <Projects />
+        <Contact />
       </main>
       <Footer />
     </>

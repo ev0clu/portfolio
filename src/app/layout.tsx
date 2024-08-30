@@ -95,7 +95,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ScrollProvider>
-            <div className="relative flex min-h-screen flex-col">
+            <div className="container relative flex min-h-screen flex-col">
               {children}
             </div>
           </ScrollProvider>
