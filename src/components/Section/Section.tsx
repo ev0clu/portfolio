@@ -21,7 +21,6 @@ const Section = ({ children, id, className }: SectionProps) => {
     threshold: 0,
     // triggerOnce: true,
     onChange: (inView) => {
-      console.log("view: ", id);
       if (inView) {
         setActiveSection(id);
       }
