@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ScrollProvider } from "@/components/ScrollProvider";
 import { siteConfig } from "@/config/site";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -99,6 +100,7 @@ export default function RootLayout({
               {children}
             </div>
           </ScrollProvider>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
