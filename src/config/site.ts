@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Laszlo Kis Portfolio",
-  url: "https://lk.com",
-  ogImage: "https://lk.com/og.jpg",
+  url: `${process.env.NEXT_PUBLIC_PRODUCTION_HOST}`,
+  ogImage: `${process.env.NEXT_PUBLIC_PRODUCTION_HOST}/og.jpg`,
   description: "Laszlo Kis full stack developer portfolio website",
   links: {
     linkedin: "https://www.linkedin.com/in/laszlo-kis-1932a1276",
