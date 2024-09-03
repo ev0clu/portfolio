@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { ScrollProvider } from "@/components/ScrollProvider";
 import { siteConfig } from "@/config/site";
 import { Toaster } from "@/components/ui/sonner";
+import Script from "next/script";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -89,6 +90,10 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
+        <Script
+          strategy="beforeInteractive"
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

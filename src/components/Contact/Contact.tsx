@@ -23,6 +23,7 @@ import {
 import Section from "../Section/Section";
 import SectionTitle from "../Section/SectionTitle";
 import { LoaderCircle } from "lucide-react";
+import { getReCaptchaToken } from "@/lib/recaptcha";
 import { contactAction } from "@/app/actions/action";
 
 const Contact = () => {
@@ -49,7 +50,12 @@ const Contact = () => {
     try {
       setIsSubmitting(true);
 
-      const response = await contactAction(data);
+      const token = await getReCaptchaToken();
+      if (!token) {
+        throw new Error("Failed to get reCAPTCHA token");
+      }
+
+      const response = await contactAction(token, data);
 
       if (response.success) {
         setIsSubmitting(false);
