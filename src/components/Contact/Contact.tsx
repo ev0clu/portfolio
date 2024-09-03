@@ -16,17 +16,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { contactFormSchema } from "@/lib/validations/contactFormSchema";
+import {
+  contactFormSchema,
+  TContactFormSchema,
+} from "@/lib/validations/contactFormSchema";
 import Section from "../Section/Section";
 import SectionTitle from "../Section/SectionTitle";
 import { LoaderCircle } from "lucide-react";
-
-type formType = z.infer<typeof contactFormSchema>;
+import { contactAction } from "@/app/actions/action";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<formType>({
+  const form = useForm<TContactFormSchema>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
@@ -43,28 +45,18 @@ const Contact = () => {
     });
   }, [form, form.formState.isSubmitSuccessful]);
 
-  const onSubmit = async (data: formType) => {
+  const onSubmit = async (data: TContactFormSchema) => {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          message: data.message,
-        }),
-      });
+      const response = await contactAction(data);
 
-      const body = await response.json();
-
-      if (response.ok) {
+      if (response.success) {
         setIsSubmitting(false);
-        toast.success(body.message);
+        toast.success(response.message);
       } else {
         setIsSubmitting(false);
-        toast.error(body.message);
+        toast.error(response.message);
       }
     } catch (error) {
       setIsSubmitting(false);
