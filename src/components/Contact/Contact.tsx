@@ -64,8 +64,9 @@ const Contact = () => {
         setIsSubmitting(false);
         toast.error(response.message);
       }
-    } catch (error) {
+    } catch (error: any) {
       setIsSubmitting(false);
+      //toast.error(`${error.name}: ${error.message}`);
       toast.error("An unexpected error is occured");
     }
   };
