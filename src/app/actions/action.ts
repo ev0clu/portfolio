@@ -7,13 +7,38 @@ import {
 } from "@/lib/validations/contactFormSchema";
 import EmailContactTemplate from "@/components/EmailContactTemplate";
 import EmailAutoReplyTemplate from "@/components/EmailAutoReplyTemplate";
+import { verifyReCaptchaToken } from "@/lib/recaptcha";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const contactAction = async (
+  token: string,
   data: TContactFormSchema,
 ): Promise<{ success: boolean; message: string | any }> => {
   try {
+    const reCaptchaData = await verifyReCaptchaToken(token);
+
+    if (!reCaptchaData) {
+      return {
+        success: false,
+        message: "reCAPTCHA verification has failed",
+      };
+    }
+
+    if (!reCaptchaData.success) {
+      return {
+        success: false,
+        message: reCaptchaData["error-codes"],
+      };
+    }
+
+    if (reCaptchaData.score < 0.5) {
+      return {
+        success: false,
+        message: "reCAPTCHA has failed. Try again!",
+      };
+    }
+
     const { name, email, message } = contactFormSchema.parse(data);
 
     const { error: contactError } = await resend.emails.send({

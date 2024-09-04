@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -22,11 +21,17 @@ import {
 } from "@/lib/validations/contactFormSchema";
 import Section from "../Section/Section";
 import SectionTitle from "../Section/SectionTitle";
+import Recaptcha from "./Recaptcha";
 import { LoaderCircle } from "lucide-react";
 import { contactAction } from "@/app/actions/action";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+
+  const handleRecaptchaVerify = (token: string) => {
+    setRecaptchaToken(token);
+  };
 
   const form = useForm<TContactFormSchema>({
     resolver: zodResolver(contactFormSchema),
@@ -38,18 +43,26 @@ const Contact = () => {
   });
 
   useEffect(() => {
-    form.reset({
-      name: "",
-      email: "",
-      message: "",
-    });
-  }, [form, form.formState.isSubmitSuccessful]);
+    if (recaptchaToken) {
+      form.reset({
+        name: "",
+        email: "",
+        message: "",
+      });
+      setRecaptchaToken("");
+    }
+  }, [recaptchaToken, form, form.formState.isSubmitSuccessful]);
 
   const onSubmit = async (data: TContactFormSchema) => {
     try {
+      if (!recaptchaToken) {
+        toast.error("Please complete the reCAPTCHA");
+        return;
+      }
+
       setIsSubmitting(true);
 
-      const response = await contactAction(data);
+      const response = await contactAction(recaptchaToken, data);
 
       if (response.success) {
         setIsSubmitting(false);
@@ -60,6 +73,7 @@ const Contact = () => {
       }
     } catch (error) {
       setIsSubmitting(false);
+      setRecaptchaToken("");
       toast.error("An unexpected error is occured");
     }
   };
@@ -127,7 +141,7 @@ const Contact = () => {
               </FormItem>
             )}
           />
-          <div className="text-center">
+          <div className="flex flex-col items-center gap-10">
             <Button type="submit" disabled={isSubmitting}>
               Submit
               {isSubmitting && (
@@ -137,6 +151,11 @@ const Contact = () => {
                 />
               )}
             </Button>
+            <Recaptcha
+              siteKey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
+              onVerify={handleRecaptchaVerify}
+              token={recaptchaToken}
+            />
           </div>
         </form>
       </Form>
