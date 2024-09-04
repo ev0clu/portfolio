@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "../ui/button";
+import Image from "next/image";
 
 interface ProjectCardProps {
   name: string;
@@ -54,19 +55,24 @@ const ProjectCard = ({
   return (
     <Card className="flex flex-col hover:bg-accent/30 hover:shadow-inner sm:gap-5 lg:h-80 lg:flex-row">
       <div className="mx-auto p-5 lg:w-1/3">
-        <motion.img
+        <motion.div
           whileHover={{
             scale: motionScale,
             x: motionX,
             y: motionY,
             transition: { duration: 0.3 },
           }}
-          src={img}
-          width={500}
-          height={500}
-          alt={name}
           className="rounded-md"
-        />
+        >
+          <Image
+            src={img}
+            width={1920}
+            height={970}
+            alt={name}
+            priority
+            className="rounded-md"
+          />
+        </motion.div>
       </div>
       <div className="flex flex-col justify-between lg:w-2/3">
         <div>
