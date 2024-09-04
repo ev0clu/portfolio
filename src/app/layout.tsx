@@ -84,16 +84,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Script
+        strategy="beforeInteractive"
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
+      />
       <body
         className={cn(
           "min-h-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] font-sans antialiased",
           fontSans.variable,
         )}
       >
-        <Script
-          strategy="beforeInteractive"
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
-        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
