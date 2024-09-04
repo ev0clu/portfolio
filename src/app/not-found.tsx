@@ -27,6 +27,7 @@ const NotFound = () => {
         </div>
         <div className="w-full text-center">
           <Link
+            rel="preconnect"
             href={"/"}
             className={cn(
               buttonVariants({ variant: "outline" }),
