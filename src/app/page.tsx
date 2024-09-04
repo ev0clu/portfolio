@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="space-y-10">
+      <main className="space-y-14">
         <Hero />
         <About />
         <Projects />

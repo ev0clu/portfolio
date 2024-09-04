@@ -71,7 +71,7 @@ const Contact = () => {
   };
 
   return (
-    <Section id="Contact">
+    <Section id="Contact" className="pb-[7.5rem]">
       <SectionTitle>Contact</SectionTitle>
       <p className="pb-8 text-center text-muted-foreground">
         Feel free to Contact me by submitting the form below and I will get back
