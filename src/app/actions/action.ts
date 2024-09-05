@@ -62,9 +62,9 @@ export const contactAction = async (
     }
 
     const { error: replyError } = await resend.emails.send({
-      /*  from: "Laszlo Kis <info@resend.dev>",
+      /*  from: "Laszlo Kis <noreply@resend.dev>",
           to: ["ev0clu@gmail.com"],*/
-      from: "Laszlo Kis <info@laszlokis.site>",
+      from: "Laszlo Kis <noreply@laszlokis.site>",
       to: [`${email}`],
       subject: `Your email was received`,
       react: EmailAutoReplyTemplate({ name, email }) as React.ReactElement,
