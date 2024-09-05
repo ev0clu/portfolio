@@ -39,11 +39,13 @@ const Contact = () => {
   });
 
   useEffect(() => {
-    form.reset({
-      name: "",
-      email: "",
-      message: "",
-    });
+    if (form.formState.isSubmitSuccessful) {
+      form.reset({
+        name: "",
+        email: "",
+        message: "",
+      });
+    }
   }, [form, form.formState.isSubmitSuccessful]);
 
   const onSubmit = async (data: TContactFormSchema) => {
