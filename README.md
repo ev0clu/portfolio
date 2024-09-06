@@ -8,8 +8,9 @@ My personal portfolio project has built with Next.js, Typescript and TailwindCSS
 
 - Google reCAPTCHA v3 used to help to protect the sites from fraudulent activities, spam, and abuse
 - Scrolling to target feature is added to header navigations
-- Intersection observer used to deteck view area
+- Intersection observer used to detect view area
 - Resend used for SMTP email sending
+- React email used for email template
 - Next.js with server actions used for SEO optimalization
 - React context used for state management
 - React Hook form used to create forms
@@ -18,7 +19,10 @@ My personal portfolio project has built with Next.js, Typescript and TailwindCSS
 - Framer motion used for animations
 - Toast notification use to improve UX
 - Responsive design for mobile and desktop as well
-- Deployed with self-hosted in Docker container
+- Self-hosted deployement in Docker container
+- Nginx Proxy Manager uses as reverse proxy with Let's encrypt for SSL.
+- Cloudflare uses as DNS provider and protecting traffic.
+- Self-hosted Plausible uses for analytics
 
 ## How to run from local repository
 
@@ -27,19 +31,20 @@ My personal portfolio project has built with Next.js, Typescript and TailwindCSS
 
 ```
 RESEND_API_KEY=
-NEXT_PUBLIC_PRODUCTION_HOST=https://example.com
 NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY=
 GOOGLE_RECAPTHCA_SECRET_KEY=
+NEXT_PUBLIC_PRODUCTION_HOST=https://example.com
+NEXT_PUBLIC_PLAUSIBLE_HOST=https://plausible.example.com
 ```
 
-Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the **ENV** section
+Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the **ENV** section with the correct _values_ and _keys_
 
 ## How to self-hosted with Docker container in the same machine
 
 0. Docker setup:
 
 - Install [Docker](https://docs.docker.com/get-started/get-docker/) on your machine.
-- You need to have the `Dockerfile` in the root folder with the same content as it is in this repository already. Need to update the `next.config.mjs` same as it is in this repository also.
+- You need to have the `Dockerfile` in the root folder with the same content as it is in this repository already (add **ENV** according to the previous section). Need to update the `next.config.mjs` same as it is in this repository also.
 
 1. Build your container: `docker build -t nextjs-portfolio .`
 2. Run your container: `docker run -p 3000:3000 nextjs-portfolio`
@@ -49,7 +54,7 @@ Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the 
 0. Docker setup:
 
 - Install [Docker](https://docs.docker.com/get-started/get-docker/) on your machine.
-- You need to have the `Dockerfile` in the root folder with the same content as it is in this repository already. Need to update the `next.config.mjs` same as it is in this repository also.
+- You need to have the `Dockerfile` in the root folder with the same content as it is in this repository already (add **ENV** according to the previous section). Need to update the `next.config.mjs` same as it is in this repository also.
 
 1. Build your container: `docker build -t nextjs-portfolio .`
 2. Save docker image into **\*.tar** file in the project root folder: `docker save -o nextjs-portfolio.tar nextjs-portfolio`
@@ -89,21 +94,23 @@ Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the 
 
 ### Dependencies
 
+- [Next.js](https://nextjs.org/)
 - [React](https://react.dev/)
 - [React DOM](https://www.npmjs.com/package/react-dom)
-- [React Router DOM](https://www.npmjs.com/package/react-router-dom)
-- [Material UI](https://mui.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Framer Motion](https://www.framer.com/)
+- [Sonner toast](https://sonner.emilkowal.ski/)
+- [Lucide icons](https://lucide.dev/)
+- [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer)
 - [React Hook Form](https://react-hook-form.com/)
 - [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers)
 - [Zod](https://zod.dev/)
-- [TanStack Query](https://tanstack.com/)
-- [React Toastify](https://www.npmjs.com/package/react-toastify)
-- [Typescript](https://www.typescriptlang.org/)
+- [Resend](https://resend.com/)
+- [React email](https://react.email/)
+- [Google reCAPTCHA v3](https://www.google.com/recaptcha/about/)
 
 ### Layout
 
-![layout-1 picture](https://github.com/ev0clu/task-manager/blob/main/layout-1.png?raw=true)<br>
-![layout-2 picture](https://github.com/ev0clu/task-manager/blob/main/layout-2.png?raw=true)<br>
-![layout-3 picture](https://github.com/ev0clu/task-manager/blob/main/layout-3.png?raw=true)<br>
-![layout-4 picture](https://github.com/ev0clu/task-manager/blob/main/layout-4.png?raw=true)<br>
-![layout-5 picture](https://github.com/ev0clu/task-manager/blob/main/layout-5.png?raw=true)<br>
+![layout picture](https://github.com/ev0clu/portfolio/blob/main/public/og.jpg?raw=true)<br>
