@@ -13,7 +13,7 @@ const Photo = () => {
       }}
     >
       <Image
-        src="/coding-image.webp"
+        src="/coding-image.png"
         width={400}
         height={400}
         priority
