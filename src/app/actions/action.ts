@@ -42,9 +42,9 @@ export const contactAction = async (
     const { name, email, message } = contactFormSchema.parse(data);
 
     const { error: contactError } = await resend.emails.send({
-      /* from: "Laszlo Kis <info@resend.dev>",
+      /* from: "Laszlo Kis <noreply@resend.dev>",
             to: ["ev0clu@gmail.com"],*/
-      from: "Laszlo Kis <info@laszlokis.site>",
+      from: "Laszlo Kis <noreply@laszlokis.site>",
       to: ["laszlo.peter.kis@gmail.com"],
       subject: `New Portfolio contact: ${name}`,
       react: EmailContactTemplate({
