@@ -88,6 +88,13 @@ export default function RootLayout({
         strategy="lazyOnload"
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
       />
+      <Script
+        defer
+        data-domain={`${process.env.NEXT_PUBLIC_PRODUCTION_HOST}`}
+        strategy="beforeInteractive"
+        src={`${process.env.NEXT_PUBLIC_PLAUSIBLE_HOST}/js/script.js`}
+      />
+
       <body
         className={cn(
           "min-h-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] font-sans antialiased",
