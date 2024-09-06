@@ -13,7 +13,7 @@ const MainNav = () => {
   return (
     <nav className="flex flex-row items-center justify-between">
       <Link href={"/"} className="hidden sm:block" aria-label="Home link">
-        <Image src="/logo.svg" width={20} height={20} alt="Logo" />
+        <Image src="/logo.svg" width={20} height={20} priority alt="Logo" />
       </Link>
       <ul className="hidden flex-row gap-6 font-semibold sm:flex">
         {navConfig.map((element) => (

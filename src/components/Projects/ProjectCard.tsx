@@ -69,7 +69,7 @@ const ProjectCard = ({
             width={1920}
             height={970}
             alt={name}
-            priority
+            loading="lazy"
             className="rounded-md"
           />
         </motion.div>

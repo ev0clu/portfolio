@@ -9,14 +9,15 @@ const Photo = () => {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 0.3, duration: 0.4, ease: "easeInOut" },
+        transition: { duration: 1, ease: "easeInOut" },
       }}
     >
       <Image
-        src="/coding-image.png"
+        src="/coding-image.webp"
         width={400}
         height={400}
         priority
+        quality={70}
         alt="Coding image"
       />
     </motion.div>
