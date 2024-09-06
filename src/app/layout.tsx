@@ -85,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Script
-        strategy="beforeInteractive"
+        strategy="lazyOnload"
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
       />
       <body
