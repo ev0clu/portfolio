@@ -2,77 +2,90 @@
 
 My personal portfolio project has built with Next.js, Typescript and TailwindCSS.
 
-<!--
-### Demo: [Link]()
+### Demo: [Link](https://laszlokis.site)
 
 ## Features
 
-- Allow user to register, log in and log out
-- Login can be done with previosly registered account
-- Only logged in users have rights to create, update, remove or check the tasks
-- User can update his/her own profile and tasks
-- PostgreSQL database used to store data
-- Prisma ORM used to retrive data from database
-- React.js used for CSR
-- Nest.js used for backend
-- Bcrypt used to hash the user password
-- JWT used for authentication
+- Google reCAPTCHA v3 used to help to protect the sites from fraudulent activities, spam, and abuse
+- Scrolling to target feature is added to header navigations
+- Intersection observer used to deteck view area
+- Resend used for SMTP email sending
+- Next.js with server actions used for SEO optimalization
+- React context used for state management
 - React Hook form used to create forms
-- Zod used for validation
-- Material UI used for styling
+- Zod used for form validation
+- Tailwind CSS used for styling
+- Framer motion used for animations
 - Toast notification use to improve UX
-- TanStack query use to get data from backend and cache them
-- Responsive design
-- Turborepo used for monorepo
-- Deployed on Render.com as Web Service
+- Responsive design for mobile and desktop as well
+- Deployed with self-hosted in Docker container
 
 ## How to run from local repository
 
 1. Clone the repository
-2. Run `npm install` command in your terminal inside the root folder
-3. Set up PostgreSQL database with docker or with an online database.
-4. Navigate to **backend** folder and create .env file and add enviromental variables:
-   open ssl key should generate to JWT_SECRET<br>
+2. Create `.env.local` file and add enviromental variables according to the `.env.example`:
 
 ```
-PORT=4000
-DATABASE_URL=
-DIRECT_URL=
-JWT_SECRET=
-REFRESH_JWT_SECRET=
+RESEND_API_KEY=
+NEXT_PUBLIC_PRODUCTION_HOST=https://example.com
+NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY=
+GOOGLE_RECAPTHCA_SECRET_KEY=
 ```
 
-5. Run `npx prisma generate`
-6. Navigate to **frontend** folder and create .env file and add environmental variables:
+Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the **ENV** section
 
-```
-VITE_BACKEND_ADDR=http://localhost:4000
-VITE_API_LOGIN=${VITE_BACKEND_ADDR}/api/auth/login
-VITE_API_LOGOUT=${VITE_BACKEND_ADDR}/api/auth/logout
-VITE_API_REGISTER=${VITE_BACKEND_ADDR}/api/auth/register
-VITE_API_JWT_REFRESH=${VITE_BACKEND_ADDR}/api/auth/refresh
-VITE_API_WORKSPACES=${VITE_BACKEND_ADDR}/api/workspaces
-VITE_API_BOARDS=${VITE_BACKEND_ADDR}/api/boards
-VITE_API_LISTS=${VITE_BACKEND_ADDR}/api/lists
-VITE_API_CARDS=${VITE_BACKEND_ADDR}/api/cards
-VITE_API_USER=${VITE_BACKEND_ADDR}/api/user
-```
+## How to self-hosted with Docker container in the same machine
 
-6. Navigat to **root** folder and run `npm run dev` command in your terminal
-7. Backend server running at `http://localhost:4000/`
-8. Frontend server running at `http://localhost:5173/`
+0. Docker setup:
+
+- Install [Docker](https://docs.docker.com/get-started/get-docker/) on your machine.
+- You need to have the `Dockerfile` in the root folder with the same content as it is in this repository already. Need to update the `next.config.mjs` same as it is in this repository also.
+
+1. Build your container: `docker build -t nextjs-portfolio .`
+2. Run your container: `docker run -p 3000:3000 nextjs-portfolio`
+
+## How to self-hosted with Docker container in Machine-B
+
+0. Docker setup:
+
+- Install [Docker](https://docs.docker.com/get-started/get-docker/) on your machine.
+- You need to have the `Dockerfile` in the root folder with the same content as it is in this repository already. Need to update the `next.config.mjs` same as it is in this repository also.
+
+1. Build your container: `docker build -t nextjs-portfolio .`
+2. Save docker image into **\*.tar** file in the project root folder: `docker save -o nextjs-portfolio.tar nextjs-portfolio`
+3. Copy **\*.tar** file into the Machine-B `scp /path-to-tar-file/nextjs-portfolio.tar machine-b-username@192.xxx.x.xx:/path-to-machine-b-folder/`
+4. Load docker container: `docker load -i /path-to-machine-b-folder/nextjs-portfolio.tar`<br/>
+   You can check the does the image exist: `docker images`
+5. Run your container: `docker run -d --name nextjs-portfolio -p 3000:3000 nextjs-portfolio`<br/>
+6. Next.js server running at `http://localhost:3000/`
+7. Redeploy new version:<br/>
+
+- Remove previous container. Run `docker container ls` than `docker container rm -f <container-name>`
+- Remove previous image. Run `docker image ls` than `docker image rm -f <image-name>`
 
 ### Useful links and informations
 
-- Open SSL key generation:
-  - You can use the following link to create open ssl key: `https://www.cryptool.org/en/cto/openssl` or you can install open ssl and generate key from terminal. To generate code you should run: `openssl rand -base64 32`
+- Next.js standalone build for Docker:
+  - [Next.js](https://nextjs.org/docs/app/api-reference/next-config-js/output#automatically-copying-traced-files)
+  - [GitHub](https://github.com/vercel/next.js/tree/canary/examples/with-docker)
+- Scroll to target:
+  - [ReactHustle](https://reacthustle.com/blog/nextjs-scroll-to-element)
+- Cubic Bezier:
+  - [CSS Portal](https://www.cssportal.com/css-cubic-bezier-generator/)
+  - [Cubic Bezier site](https://cubic-bezier.com/)
 - React Hook Form usage with UI component needs to has `ref={null}` property to avoid ref warning:
   - [Stackoverflow](https://stackoverflow.com/questions/67877887/react-hook-form-v7-function-components-cannot-be-given-refs-attempts-to-access)
   - [GitHub](https://github.com/react-hook-form/react-hook-form/issues/3411)
-- Prisma
-  - `npx prisma migrate dev --create-only` creates new migration and delete the remote database
-  - `npx prisma migrate dev` sync remote database with schema
-  - `npx prisma db push` push the schema from local to remote database
+- Self-hosted with cloudflare dns:
+  - [Cloudflare Archive](https://community.cloudflare.com/tdeprecated-redirect-www-example-com-to-example-com/78347)
+  - [Cloudflare test redirection](https://community.cloudflare.com/t/redirect-to-non-www/596929)
+- Self-hosted analytics:
+  - Plausible (Community Edition)
+    - [Plausible](https://plausible.io/)
+    - [Github](https://github.com/plausible/community-edition/)
+  - Umami
+    - [umami](https://umami.is/)
+    - [Github](https://github.com/umami-software/umami)
 
 ### Dependencies
 
@@ -83,16 +96,9 @@ VITE_API_USER=${VITE_BACKEND_ADDR}/api/user
 - [React Hook Form](https://react-hook-form.com/)
 - [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers)
 - [Zod](https://zod.dev/)
-- [date-fns](https://date-fns.org/)
 - [TanStack Query](https://tanstack.com/)
 - [React Toastify](https://www.npmjs.com/package/react-toastify)
 - [Typescript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [Nest.js](https://nestjs.com/)
-- [Prisma](https://www.prisma.io/)
-- [bcrypt](https://www.npmjs.com/package/bcrypt)
-- [Passport](https://www.passportjs.org/)
-- [Turborepo](https://turbo.build/repo)
 
 ### Layout
 
@@ -101,4 +107,3 @@ VITE_API_USER=${VITE_BACKEND_ADDR}/api/user
 ![layout-3 picture](https://github.com/ev0clu/task-manager/blob/main/layout-3.png?raw=true)<br>
 ![layout-4 picture](https://github.com/ev0clu/task-manager/blob/main/layout-4.png?raw=true)<br>
 ![layout-5 picture](https://github.com/ev0clu/task-manager/blob/main/layout-5.png?raw=true)<br>
--->
