@@ -74,7 +74,7 @@ const Contact = () => {
   };
 
   return (
-    <Section id="Contact" className="pb-[7.5rem]">
+    <Section id="Contact" className="h-screen justify-start">
       <SectionMotion>
         <SectionTitle>Contact</SectionTitle>
         <p className="pb-8 text-center text-muted-foreground">
