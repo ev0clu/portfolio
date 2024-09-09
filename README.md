@@ -1,6 +1,6 @@
 # **Portfolio**
 
-My personal portfolio project has built with Next.js, Typescript and TailwindCSS.
+My personal portfolio project has built with Next.js, Typescript and TailwindCSS. Website is self-hosted on VPS with Nginx Proxy Manager and docker container. Plausible for analytics is also self-hosted in docker container. Cloudflare is used as DNS provider and for traffic protection.
 
 ### Demo: [Link](https://laszlokis.site)
 
@@ -56,7 +56,8 @@ Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the 
 - Install [Docker](https://docs.docker.com/get-started/get-docker/) on your machine.
 - You need to have the `Dockerfile` in the root folder with the same content as it is in this repository already (add **ENV** according to the previous section). Need to update the `next.config.mjs` same as it is in this repository also.
 
-1. Build your container: `docker build -t nextjs-portfolio .`
+0. Check docker is active: `systemctl is-active docker`.
+1. Build your container: `docker build --platform linux/amd64 -t nextjs-portfolio .` If you get error: _ERROR: Cannot connect to the Docker daemon at unix:///home/path-to-docker/.docker/desktop/docker.sock. Is the docker daemon running?_, than you should run the followings: `sudo systemctl start docker`, `sudo systemctl enable docker`, `export DOCKER_HOST=unix:///var/run/docker.sock`. Now you can try to build the image again.
 2. Save docker image into **\*.tar** file in the project root folder: `docker save -o nextjs-portfolio.tar nextjs-portfolio`
 3. Copy **\*.tar** file into the Machine-B `scp /path-to-tar-file/nextjs-portfolio.tar machine-b-username@192.xxx.x.xx:/path-to-machine-b-folder/`
 4. Load docker container: `docker load -i /path-to-machine-b-folder/nextjs-portfolio.tar`<br/>
