@@ -8,7 +8,7 @@ import { TNavConfig } from "@/config/nav";
 
 interface SectionProps {
   children: ReactNode;
-  id: TNavConfig;
+  id: TNavConfig | "Hosting";
   className?: string;
 }
 
@@ -22,7 +22,9 @@ const Section = ({ children, id, className }: SectionProps) => {
     // triggerOnce: true,
     onChange: (inView) => {
       if (inView) {
-        setActiveSection(id);
+        if (id !== "Hosting") {
+          setActiveSection(id);
+        }
       }
     },
   });
