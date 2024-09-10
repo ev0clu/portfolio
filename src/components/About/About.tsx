@@ -43,10 +43,7 @@ const About = () => {
             Tech stack
           </h3>
           <div className="flex justify-center">
-            <Skills
-              tileClassName="h-20 w-20 sm:h-24 sm:w-24 rounded-md bg-accent p-5 hover:text-emerald-500 hover:cursor-default"
-              tooltipClassName="bg-stone-500 border-0 text-emerald-300 font-semibold"
-            />
+            <Skills />
           </div>
         </motion.div>
       </SectionMotion>
