@@ -9,10 +9,10 @@ const Hosting = () => {
   return (
     <Section id="Hosting" className="pt-0">
       <SectionMotion>
-        <SectionTitle className="mb-2 !text-lg tracking-[0.5rem]">
+        <SectionTitle className="mb-4 !text-lg tracking-[0.5rem]">
           HOSTING
         </SectionTitle>
-        <ul className="flex w-screen flex-row items-center justify-center gap-5 bg-accent text-muted-foreground">
+        <ul className="gap:1 flex w-screen flex-col items-center justify-center bg-accent text-muted-foreground sm:flex-row sm:gap-5">
           {hostingConfig.map((element, index) => {
             return (
               <React.Fragment key={`list-wrapper_${element}-${index}`}>

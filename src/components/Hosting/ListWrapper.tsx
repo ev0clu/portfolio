@@ -10,7 +10,7 @@ const ListWrapper = ({ children, className }: ListWrapperProps) => {
   return (
     <li
       className={cn(
-        "rounded-md px-5 py-2 text-sm font-semibold tracking-[0.3rem]",
+        "rounded-md px-5 py-2 text-center text-sm font-semibold tracking-[0.3rem]",
         className,
       )}
     >
