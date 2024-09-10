@@ -79,6 +79,8 @@ Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the 
 - Cubic Bezier:
   - [CSS Portal](https://www.cssportal.com/css-cubic-bezier-generator/)
   - [Cubic Bezier site](https://cubic-bezier.com/)
+- Tooltip mobile handling:
+  - [GitHub](https://github.com/shadcn-ui/ui/issues/86)
 - React Hook Form usage with UI component needs to has `ref={null}` property to avoid ref warning:
   - [Stackoverflow](https://stackoverflow.com/questions/67877887/react-hook-form-v7-function-components-cannot-be-given-refs-attempts-to-access)
   - [GitHub](https://github.com/react-hook-form/react-hook-form/issues/3411)
