@@ -5,6 +5,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact/Contact";
 import Hosting from "@/components/Hosting/Hosting";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <About />
         <Projects />
         <Contact />
+        <Separator />
         <Hosting />
       </main>
       <Footer />
