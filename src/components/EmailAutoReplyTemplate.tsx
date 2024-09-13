@@ -18,10 +18,10 @@ const EmailAutoReplyTemplate = ({
   name,
   email,
 }: EmailAutoReplyTemplateProps) => {
-  const baseUrl =
+  /* const baseUrl =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : process.env.NEXT_PUBLIC_PRODUCTION_HOST;
+      : process.env.NEXT_PUBLIC_PRODUCTION_HOST;*/
 
   return (
     <Html lang="en">
@@ -40,13 +40,13 @@ const EmailAutoReplyTemplate = ({
           <Text style={signature.paragraph}>Best regards,</Text>
           <Text style={signature.name}>Laszlo Kis</Text>
           {/*  1x1 pixel tracking image */}
-          <Img
+          {/*  <Img
             src={`https://${baseUrl}/api/track-email?email=${email}`}
             alt="track"
             width="1"
             height="1"
             style={{ display: "none" }}
-          />
+          />*/}
         </Container>
       </Body>
     </Html>
