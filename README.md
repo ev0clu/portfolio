@@ -71,6 +71,8 @@ Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the 
 
 ### Useful links and informations
 
+- Google reCAPTCHA docs:
+  - [Google](https://developers.google.com/recaptcha/intro)
 - Next.js standalone build for Docker:
   - [Next.js](https://nextjs.org/docs/app/api-reference/next-config-js/output#automatically-copying-traced-files)
   - [GitHub](https://github.com/vercel/next.js/tree/canary/examples/with-docker)
