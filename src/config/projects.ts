@@ -1,5 +1,25 @@
 export const projects = [
   {
+    name: "Portfolio",
+    description:
+      "My personal portfolio project has built with Next.js, Typescript and TailwindCSS. Website is self-hosted on VPS with Nginx Proxy Manager and docker container. Plausible for analytics is also self-hosted in docker container. Cloudflare is used as DNS provider and for traffic protection.",
+    techStack: [
+      "Next.js",
+      "Typescript",
+      "TailwindCSS",
+      "ShadcnUI",
+      "Framer motion",
+      "React Hook Form",
+      "Zod",
+      "Resend",
+      "React email",
+      "reCAPTCHA",
+    ],
+    img: "/projects/portfolio.png",
+    github: "https://github.com/ev0clu/portfolio/",
+    demo: `https://${process.env.NEXT_PUBLIC_PRODUCTION_HOST}`,
+  },
+  {
     name: "Food Ordering App",
     description:
       "The app allows users to log in with previously registered credentials or with Google provider in order to order foods. After the checkout, stripe payment test mode let to test the payment process. New category and food can be add dynamically into the database with admin role. User profile can be updated. Filtering option is available for foods.",
