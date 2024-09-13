@@ -94,12 +94,14 @@ export default function RootLayout({
           strategy="lazyOnload"
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
         />
-        <Script
-          defer
-          data-domain={`${process.env.NEXT_PUBLIC_PRODUCTION_HOST}`}
-          strategy="beforeInteractive"
-          src={`${process.env.NEXT_PUBLIC_PLAUSIBLE_HOST}/js/script.js`}
-        />
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            defer
+            data-domain={`${process.env.NEXT_PUBLIC_PRODUCTION_HOST}`}
+            strategy="beforeInteractive"
+            src={`${process.env.NEXT_PUBLIC_PLAUSIBLE_HOST}/js/script.js`}
+          />
+        )}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
