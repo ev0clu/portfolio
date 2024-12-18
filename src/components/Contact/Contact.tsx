@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import {
   contactFormSchema,
   TContactFormSchema,
-} from "@/lib/validations/contactFormSchema";
+} from "@/schema/contactFormSchema";
 import Section from "../Section/Section";
 import SectionMotion from "../Section/SectionMotion";
 import SectionTitle from "../Section/SectionTitle";

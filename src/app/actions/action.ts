@@ -4,7 +4,7 @@ import { Resend } from "resend";
 import {
   contactFormSchema,
   TContactFormSchema,
-} from "@/lib/validations/contactFormSchema";
+} from "@/schema/contactFormSchema";
 import EmailContactTemplate from "@/components/EmailContactTemplate";
 import EmailAutoReplyTemplate from "@/components/EmailAutoReplyTemplate";
 import { verifyReCaptchaToken } from "@/lib/recaptcha";
