@@ -1,4 +1,4 @@
-name: Lint merge to main
+name: Lint and Typecheck merge to main
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  lint:
+  lint and typecheck:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +22,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
-          cache: "npm"
+          node-version: "22.x"
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Clean Install dependencies
         run: npm ci
