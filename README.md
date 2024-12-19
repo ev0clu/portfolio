@@ -29,12 +29,16 @@ My personal portfolio project has built with Next.js, Typescript and TailwindCSS
 1. Clone the repository
 2. Create `.env.local` file and add enviromental variables according to the `.env.example`:
 
-```
+```env
+NODE_ENV=development
 RESEND_API_KEY=
-NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY=
 GOOGLE_RECAPTHCA_SECRET_KEY=
+
+NEXT_PUBLIC_NODE_ENV=development
+NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY=
 NEXT_PUBLIC_PRODUCTION_HOST=https://example.com
 NEXT_PUBLIC_PLAUSIBLE_HOST=https://plausible.example.com
+NEXT_PUBLIC_GOOGLE_DRIVE_URL=
 ```
 
 Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the **ENV** section with the correct _values_ and _keys_
