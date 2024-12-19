@@ -52,6 +52,7 @@ Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the 
 
 1. Build your container: `docker build -t nextjs-portfolio .`
 2. Run your container: `docker run -p 3000:3000 nextjs-portfolio`
+3. Next.js server running at `http://localhost:3000/`
 
 ## How to self-hosted with Docker container in Machine-B
 
@@ -67,7 +68,7 @@ Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the 
 4. Load docker container: `docker load -i /path-to-machine-b-folder/nextjs-portfolio.tar`<br/>
    You can check the does the image exist: `docker images`
 5. Run your container: `docker run -d --name nextjs-portfolio -p 3000:3000 nextjs-portfolio`<br/>
-6. Next.js server running at `http://localhost:3000/`
+6. Next.js server running at `http://192.xxx.x.xx:3000/`
 7. Redeploy new version:<br/>
 
 - Remove previous container. Run `docker container ls` than `docker container rm -f <container-name>`
@@ -100,6 +101,9 @@ Rename `Dockerfile.example` to `Dockerfile` and add the same variables into the 
   - Umami
     - [umami](https://umami.is/)
     - [Github](https://github.com/umami-software/umami)
+- Self-hosted NGINX Proxy Manager
+  - [Youtube #1](https://www.youtube.com/watch?v=qlcVx-k-02E)
+  - [Youtube #2](https://www.youtube.com/watch?v=GarMdDTAZJo)
 
 ### Dependencies
 
