@@ -1,3 +1,5 @@
+import { env } from "@/env";
+
 export const projects = [
   {
     name: "Portfolio",
@@ -17,7 +19,30 @@ export const projects = [
     ],
     img: "/projects/portfolio.png",
     github: "https://github.com/ev0clu/portfolio/",
-    demo: `https://${process.env.NEXT_PUBLIC_PRODUCTION_HOST}`,
+    demo: `https://${env.NEXT_PUBLIC_PRODUCTION_HOST}`,
+  },
+  {
+    name: "PDF AI SaaS App",
+    description:
+      "A PDF AI SaaS full stack app has built with Next.js framework, Shadcn UI, OpenAI, LangChain, Stripe and more. The app allows users to upload any PDF document with size limit based on the subscription plan and search for specific information inside this document. Only authenticated users can use the platform. There are 2 options: Free plan with limited usage and Pro plan to give more features into the user.",
+    techStack: [
+      "Next.js",
+      "Typescript",
+      "TailwindCSS",
+      "ShadcnUI",
+      "TanStack Query",
+      "Auth.js",
+      "Prisma",
+      "MongoDB",
+      "OpenAI",
+      "Langchain",
+      "Pinecone",
+      "Uploadthing",
+      "Stripe",
+    ],
+    img: "/projects/pdf-ai-saas-app.png",
+    github: "https://github.com/ev0clu/pdf-ai-saas",
+    demo: `https://www.youtube.com/watch?v=cYNyzFaP39A`,
   },
   {
     name: "Food Ordering App",
