@@ -8,8 +8,9 @@ import {
 import EmailContactTemplate from "@/components/EmailContactTemplate";
 import EmailAutoReplyTemplate from "@/components/EmailAutoReplyTemplate";
 import { verifyReCaptchaToken } from "@/lib/recaptcha";
+import { env } from "@/env";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(env.RESEND_API_KEY);
 
 export const contactAction = async (
   token: string,

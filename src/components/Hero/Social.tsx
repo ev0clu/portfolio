@@ -1,5 +1,6 @@
 "use client";
 
+import { env } from "@/env";
 import { motion } from "framer-motion";
 import { FileDown } from "lucide-react";
 import Link from "next/link";
@@ -17,7 +18,7 @@ const Social = () => {
     >
       <div className="flex flex-row items-center gap-3">
         <Link
-          href="https://drive.google.com/file/d/1mnIhp4rHmHQ4zd8LLaq_0jQOQgssJEtr/view?usp=sharing"
+          href={`${env.NEXT_PUBLIC_GOOGLE_DRIVE_URL}`}
           className="hover:scale-105 hover:opacity-75"
           aria-label="CV download link"
           target="_blank"

@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { ScrollProvider } from "@/components/ScrollProvider";
 import { siteConfig } from "@/config/site";
 import { Toaster } from "@/components/ui/sonner";
+import { env } from "@/env";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -92,14 +93,14 @@ export default function RootLayout({
       >
         <Script
           strategy="lazyOnload"
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
+          src={`https://www.google.com/recaptcha/api.js?render=${env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY}`}
         />
-        {process.env.NODE_ENV === "production" && (
+        {env.NODE_ENV === "production" && (
           <Script
             defer
-            data-domain={`${process.env.NEXT_PUBLIC_PRODUCTION_HOST}`}
+            data-domain={`${env.NEXT_PUBLIC_PRODUCTION_HOST}`}
             strategy="beforeInteractive"
-            src={`${process.env.NEXT_PUBLIC_PLAUSIBLE_HOST}/js/script.js`}
+            src={`${env.NEXT_PUBLIC_PLAUSIBLE_HOST}/js/script.js`}
           />
         )}
         <ThemeProvider

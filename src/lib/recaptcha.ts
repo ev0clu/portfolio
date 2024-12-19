@@ -1,8 +1,10 @@
+import { env } from "@/env";
+
 export const getReCaptchaToken = async (): Promise<string | null> => {
   return new Promise((resolve, reject) => {
     return grecaptcha.ready(async () => {
       try {
-        const siteKey = process.env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY;
+        const siteKey = env.NEXT_PUBLIC_GOOGLE_RECAPTHCA_SITE_KEY;
         if (!siteKey) {
           resolve(null);
           return;
@@ -18,7 +20,7 @@ export const getReCaptchaToken = async (): Promise<string | null> => {
 };
 
 export const verifyReCaptchaToken = async (token: string) => {
-  const secretKey = process.env.GOOGLE_RECAPTHCA_SECRET_KEY;
+  const secretKey = env.GOOGLE_RECAPTHCA_SECRET_KEY;
   if (!secretKey) {
     throw new Error("No secret key found");
   }
